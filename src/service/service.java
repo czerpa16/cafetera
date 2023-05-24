@@ -24,36 +24,12 @@ public class service {
         System.out.println("============Gracias===========");
     }
 
-    public void servicio() {
-        int op;
-        do {
-            menuPrincipal();
-            op = leer.nextInt();
-            leer.nextLine();
-            switch (op) {
-                case 1:
-                    llenarCafetera();
-                    break;
-                case 2:
-                    servirTaza();
-                    break;
-                case 3:
-                    cafe.cantidadActual = 0;
-                    System.out.println("============Gracias===========");
-                    break;
-                case 4:
-                    agregarCafe();
-                    break;
-                case 0:
-                    System.out.println("Muchas Gracias");
-                    break;
-                default:
-                    System.out.println("Opcion invalida");
-                    break;
-            }
-        } while (op != 0);
-    }
-
+   public void cantidadActual() {
+       cafe.cantidadActual = 0;
+       System.out.println("Cafetera Vacia");
+      System.out.println("==============================");
+   }
+   
     public void servirTaza() {
         int opcion;
         menu();
@@ -159,10 +135,10 @@ public class service {
             System.out.println("La cafetera no necesita ser recargada, le sera devuelto los " + cantidad + " de cafe");
              System.out.println("============Gracias===========");
         }else if (cantidad + cafe.cantidadActual > cafe.capacidadMaxima) {
-            int diferencia = cantidad - cafe.cantidadActual;// para saber que cantidad se está recargando en la cafetera
-            int devolucion = cantidad - diferencia;//conocer que valor se va a devolver o se considera exceso.
+            int aceptado = 100 - cafe.cantidadActual;//sirve para calcular la cantidad aceptada por la maquina
+            int devolucion = cantidad - aceptado;//conocer que valor se va a devolver o se considera exceso.
             cafe.cantidadActual = cafe.capacidadMaxima;
-            System.out.println("La cafetera esta llena, solo le faltaba " + cantidad + " por lo tanto le devuelvo  " + devolucion);
+            System.out.println("La cafetera esta llena, solo le faltaba " + aceptado + " por lo tanto le devuelvo  " + devolucion);
             System.out.println("============Gracias===========");
         } else {
             System.out.println("Cafetera recargada exitosamente");
